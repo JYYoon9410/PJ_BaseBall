@@ -13,10 +13,19 @@ import plotly.express as px
 import time
 from streamlit_autorefresh import st_autorefresh
 import streamlit.components.v1 as components
+import os
 # 데이터베이스 연결 설정
 def get_oracle_connection():
-    dsn_tns = cx_Oracle.makedsn('localhost', '1521', sid='xe')
-    connection = cx_Oracle.connect(user='base_man', password='1111', dsn=dsn_tns)
+    dsn_tns = cx_Oracle.makedsn(
+        os.getenv('DB_HOST', 'localhost'),
+        os.getenv('DB_PORT', '1521'),
+        sid=os.getenv('DB_SID', 'xe')
+    )
+    connection = cx_Oracle.connect(
+        user=os.getenv('DB_USER', 'base_man'),
+        password=os.getenv('DB_PASSWORD', '1111'),
+        dsn=dsn_tns
+    )
     return connection
 
 # 추천 영상 가져오기
