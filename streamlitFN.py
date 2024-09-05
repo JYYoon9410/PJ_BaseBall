@@ -690,7 +690,9 @@ if menu == "메인페이지":
 
     with col1:
         st.markdown(
-            "![KBO Logo](https://i.namu.wiki/i/cIAVSZg-lGmELZYXp2yJFFF7rlcUlF7DoOY8hA9mmzBqILjv9YhYWuGwzgmqlFgi3IW6ymtowA24uCy-SwBIbg.svg)",
+            """
+            <img src="https://i.namu.wiki/i/cIAVSZg-lGmELZYXp2yJFFF7rlcUlF7DoOY8hA9mmzBqILjv9YhYWuGwzgmqlFgi3IW6ymtowA24uCy-SwBIbg.svg" width="100"/>
+            """,
             unsafe_allow_html=True
         )  # KBO 이미지 URL을 사용하여 표시
 
