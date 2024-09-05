@@ -609,7 +609,7 @@ def fetch_cheer_data():
 st.set_page_config(
     page_title="Home in Run",
     layout="wide",
-    # page_icon="./team_logo/baseball.png"
+    page_icon="./team_logo2/baseball.png"
 )
 
 team_codes = {
