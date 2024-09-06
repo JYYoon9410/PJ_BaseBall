@@ -25,30 +25,30 @@ import os
 
 # 데이터베이스 연결 설정
 
-# def get_oracle_connection():
-#     dsn_tns = cx_Oracle.makedsn(
-#         os.getenv('DB_HOST', '192.168.0.29'),
-#         os.getenv('DB_PORT', '1521'),
-#         sid=os.getenv('DB_SID', 'xe')
-#     )
-#     connection = cx_Oracle.connect(
-#         user=os.getenv('DB_USER', 'base_man'),
-#         password=os.getenv('DB_PASSWORD', '1111'),
-#         dsn=dsn_tns
-#     )
-#     return connection
 def get_oracle_connection():
     dsn_tns = cx_Oracle.makedsn(
-        st.secrets["DB_HOST"],
-        st.secrets["DB_PORT"],
-        sid=st.secrets["DB_SID"]
+        os.getenv('DB_HOST', '192.168.0.29'),
+        os.getenv('DB_PORT', '1521'),
+        sid=os.getenv('DB_SID', 'xe')
     )
     connection = cx_Oracle.connect(
-        user=st.secrets["DB_USER"],
-        password=st.secrets["DB_PASSWORD"],
+        user=os.getenv('DB_USER', 'base_man'),
+        password=os.getenv('DB_PASSWORD', '1111'),
         dsn=dsn_tns
     )
     return connection
+# def get_oracle_connection():
+#     dsn_tns = cx_Oracle.makedsn(
+#         st.secrets["DB_HOST"],
+#         st.secrets["DB_PORT"],
+#         sid=st.secrets["DB_SID"]
+#     )
+#     connection = cx_Oracle.connect(
+#         user=st.secrets["DB_USER"],
+#         password=st.secrets["DB_PASSWORD"],
+#         dsn=dsn_tns
+#     )
+#     return connection
 # 추천 영상 가져오기
 def get_rcmd_videos_from_db(limit=None, offset=None):
     connection = get_oracle_connection()
