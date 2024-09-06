@@ -677,24 +677,24 @@ if 'recommendation_page_index' not in st.session_state:
 st.sidebar.title("메뉴")
 menu = st.sidebar.radio("선택하세요", ("메인페이지", "야구뉴스 한눈에", "구단별 추천 영상","구단별 선수 조회", "구장 주변 맛집&숙소 정보", "KBO 마켓"))
 
-# if menu == "메인페이지":
-#     col1, col2 = st.columns([1, 1.3])  # 열 비율 설정 (1:5 비율)
-#
-#     with col1:
-#         st.image(f"{team_logo_path}kbo.png",width=150)  # KBO 이미지 경로를 지정
-#
-#     with col2:
-#         st.title("Home in Run")
 if menu == "메인페이지":
-    col1, col2 = st.columns([1, 1.3])  # 열 비율 설정 (1:1.3 비율)
+    col1, col2 = st.columns([1, 1.3])  # 열 비율 설정 (1:5 비율)
 
     with col1:
-        st.markdown(
-            """
-            <img src="https://i.namu.wiki/i/cIAVSZg-lGmELZYXp2yJFFF7rlcUlF7DoOY8hA9mmzBqILjv9YhYWuGwzgmqlFgi3IW6ymtowA24uCy-SwBIbg.svg" width="100"/>
-            """,
-            unsafe_allow_html=True
-        )  # KBO 이미지 URL을 사용하여 표시
+        st.image(f"{team_logo_path}kbo.png",width=150)  # KBO 이미지 경로를 지정
+
+    with col2:
+        st.title("Home in Run")
+# if menu == "메인페이지":
+#     col1, col2 = st.columns([1, 1.3])  # 열 비율 설정 (1:1.3 비율)
+#
+#     with col1:
+#         st.markdown(
+#             """
+#             <img src="https://i.namu.wiki/i/cIAVSZg-lGmELZYXp2yJFFF7rlcUlF7DoOY8hA9mmzBqILjv9YhYWuGwzgmqlFgi3IW6ymtowA24uCy-SwBIbg.svg" width="100"/>
+#             """,
+#             unsafe_allow_html=True
+#         )  # KBO 이미지 URL을 사용하여 표시
 
     with col2:
         st.title("Home in Run")
@@ -938,21 +938,6 @@ if menu == "메인페이지":
         if st.button("다음 페이지") and st.session_state.highlight_page_index < total_pages:
             st.session_state.highlight_page_index += 1
 
-# elif menu == "야구뉴스 한눈에":
-#     st.title("야구뉴스 한눈에")
-#
-#     tabs = st.tabs(list(team_codes.keys()))
-#
-#     for i, (team_name, team_code) in enumerate(team_codes.items()):
-#         with tabs[i]:
-#             col1, empty_col, col2 = st.columns([1, 0.5, 5])
-#
-#             with col1:
-#                 st.image(f"{team_logo_path}{team_code.lower()}.png", width=150)
-#
-#             with col2:
-#                 st.header(f"{team_name} 팀 페이지")
-#                 st.markdown("### 여기는 {} 팀 페이지입니다.".format(team_name))
 elif menu == "야구뉴스 한눈에":
     st.title("야구뉴스 한눈에")
 
@@ -963,29 +948,44 @@ elif menu == "야구뉴스 한눈에":
             col1, empty_col, col2 = st.columns([1, 0.5, 5])
 
             with col1:
-                # team_codes의 키와 team_logo_url의 키가 일치하도록 변환
-                team_logo_key = {
-                    "삼성 라이온즈": "삼성",
-                    "두산 베어스": "두산",
-                    "롯데 자이언츠": "롯데",
-                    "LG 트윈스": "LG",
-                    "KIA 타이거즈": "KIA",
-                    "한화 이글스": "한화",
-                    "NC 다이노스": "NC",
-                    "SSG 랜더스": "SSG",
-                    "키움 히어로즈": "키움",
-                    "KT WIZ": "KT"
-                }.get(team_name, team_name)
-
-                # 팀 로고 URL을 사용하여 Markdown으로 이미지 표시
-                st.markdown(
-                    f"![{team_name} Logo]({team_logo_url.get(team_logo_key, '')})",
-                    unsafe_allow_html=True
-                )
+                st.image(f"{team_logo_path}{team_code.lower()}.png", width=150)
 
             with col2:
                 st.header(f"{team_name} 팀 페이지")
-                st.markdown(f"### 여기는 {team_name} 팀 페이지입니다.")
+                st.markdown("### 여기는 {} 팀 페이지입니다.".format(team_name))
+# elif menu == "야구뉴스 한눈에":
+#     st.title("야구뉴스 한눈에")
+#
+#     tabs = st.tabs(list(team_codes.keys()))
+#
+#     for i, (team_name, team_code) in enumerate(team_codes.items()):
+#         with tabs[i]:
+#             col1, empty_col, col2 = st.columns([1, 0.5, 5])
+#
+#             with col1:
+#                 # team_codes의 키와 team_logo_url의 키가 일치하도록 변환
+#                 team_logo_key = {
+#                     "삼성 라이온즈": "삼성",
+#                     "두산 베어스": "두산",
+#                     "롯데 자이언츠": "롯데",
+#                     "LG 트윈스": "LG",
+#                     "KIA 타이거즈": "KIA",
+#                     "한화 이글스": "한화",
+#                     "NC 다이노스": "NC",
+#                     "SSG 랜더스": "SSG",
+#                     "키움 히어로즈": "키움",
+#                     "KT WIZ": "KT"
+#                 }.get(team_name, team_name)
+#
+#                 # 팀 로고 URL을 사용하여 Markdown으로 이미지 표시
+#                 st.markdown(
+#                     f"![{team_name} Logo]({team_logo_url.get(team_logo_key, '')})",
+#                     unsafe_allow_html=True
+#                 )
+#
+#             with col2:
+#                 st.header(f"{team_name} 팀 페이지")
+#                 st.markdown(f"### 여기는 {team_name} 팀 페이지입니다.")
 
             st.markdown("### 기간별 뉴스 조회")
 
