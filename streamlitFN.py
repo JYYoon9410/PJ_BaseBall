@@ -14,6 +14,15 @@ import time
 from streamlit_autorefresh import st_autorefresh
 import streamlit.components.v1 as components
 import os
+
+import cx_Oracle
+import os
+
+# Oracle Instant Client 경로 설정
+client_lib_dir = os.path.join(os.getcwd(), "instantclient_23_5")
+cx_Oracle.init_oracle_client(lib_dir=client_lib_dir)
+
+
 # 데이터베이스 연결 설정
 
 def get_oracle_connection():

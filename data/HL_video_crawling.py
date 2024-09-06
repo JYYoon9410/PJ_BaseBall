@@ -72,8 +72,8 @@ def print_videos(videos):
         print()
 
 # 사용자 지정 날짜 및 비디오 수
-start_date = '2024-09-04T00:00:00Z'
-end_date = '2024-09-05T23:59:59Z'
+start_date = '2024-09-05T00:00:00Z'
+end_date = '2024-09-06T23:59:59Z'
 max_results = 50  # 최대 비디오 수
 
 # 비디오 검색 및 데이터베이스에 저장
