@@ -1322,3 +1322,4 @@ elif menu == "KBO 마켓":
         if (idx + 1) % num_columns == 0:
             st.write("")  # 다음 줄로 이동하기 위해 빈 줄 추가
 
+#깃테스트
