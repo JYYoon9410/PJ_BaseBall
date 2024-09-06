@@ -27,7 +27,7 @@ import os
 
 def get_oracle_connection():
     dsn_tns = cx_Oracle.makedsn(
-        os.getenv('DB_HOST', 'localhost'),
+        os.getenv('DB_HOST', '192.168.0.29'),
         os.getenv('DB_PORT', '1521'),
         sid=os.getenv('DB_SID', 'xe')
     )
