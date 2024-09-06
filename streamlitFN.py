@@ -14,7 +14,17 @@ import time
 from streamlit_autorefresh import st_autorefresh
 import streamlit.components.v1 as components
 import os
+
+import cx_Oracle
+import os
+
+# # Oracle Instant Client 경로 설정
+# client_lib_dir = os.path.join(os.path.dirname(__file__), "instantclient_23_5")
+# cx_Oracle.init_oracle_client(lib_dir=client_lib_dir)
+
+
 # 데이터베이스 연결 설정
+
 def get_oracle_connection():
     dsn_tns = cx_Oracle.makedsn(
         os.getenv('DB_HOST', 'localhost'),
@@ -608,7 +618,7 @@ def fetch_cheer_data():
 st.set_page_config(
     page_title="Home in Run",
     layout="wide",
-    page_icon="./team_logo/baseball.png"
+    page_icon="./team_logo2/baseball.png"
 )
 
 team_codes = {
@@ -684,7 +694,19 @@ if menu == "메인페이지":
 
     with col2:
         st.title("Home in Run")
+# if menu == "메인페이지":
+#     col1, col2 = st.columns([1, 1.3])  # 열 비율 설정 (1:1.3 비율)
+#
+#     with col1:
+#         st.markdown(
+#             """
+#             <img src="https://i.namu.wiki/i/cIAVSZg-lGmELZYXp2yJFFF7rlcUlF7DoOY8hA9mmzBqILjv9YhYWuGwzgmqlFgi3IW6ymtowA24uCy-SwBIbg.svg" width="100"/>
+#             """,
+#             unsafe_allow_html=True
+#         )  # KBO 이미지 URL을 사용하여 표시
 
+    with col2:
+        st.title("Home in Run")
     if 'selected_date' not in st.session_state:
         st.session_state.selected_date = datetime.now().date()
 
@@ -940,6 +962,39 @@ elif menu == "야구뉴스 한눈에":
             with col2:
                 st.header(f"{team_name} 팀 페이지")
                 st.markdown("### 여기는 {} 팀 페이지입니다.".format(team_name))
+# elif menu == "야구뉴스 한눈에":
+#     st.title("야구뉴스 한눈에")
+#
+#     tabs = st.tabs(list(team_codes.keys()))
+#
+#     for i, (team_name, team_code) in enumerate(team_codes.items()):
+#         with tabs[i]:
+#             col1, empty_col, col2 = st.columns([1, 0.5, 5])
+#
+#             with col1:
+#                 # team_codes의 키와 team_logo_url의 키가 일치하도록 변환
+#                 team_logo_key = {
+#                     "삼성 라이온즈": "삼성",
+#                     "두산 베어스": "두산",
+#                     "롯데 자이언츠": "롯데",
+#                     "LG 트윈스": "LG",
+#                     "KIA 타이거즈": "KIA",
+#                     "한화 이글스": "한화",
+#                     "NC 다이노스": "NC",
+#                     "SSG 랜더스": "SSG",
+#                     "키움 히어로즈": "키움",
+#                     "KT WIZ": "KT"
+#                 }.get(team_name, team_name)
+#
+#                 # 팀 로고 URL을 사용하여 Markdown으로 이미지 표시
+#                 st.markdown(
+#                     f"![{team_name} Logo]({team_logo_url.get(team_logo_key, '')})",
+#                     unsafe_allow_html=True
+#                 )
+#
+#             with col2:
+#                 st.header(f"{team_name} 팀 페이지")
+#                 st.markdown(f"### 여기는 {team_name} 팀 페이지입니다.")
 
             st.markdown("### 기간별 뉴스 조회")
 
