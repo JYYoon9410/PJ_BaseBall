@@ -19,7 +19,7 @@ import cx_Oracle
 import os
 
 # Oracle Instant Client 경로 설정
-client_lib_dir = os.path.join(os.getcwd(), "instantclient_23_5")
+client_lib_dir = os.path.join(os.path.dirname(__file__), "instantclient_23_5")
 cx_Oracle.init_oracle_client(lib_dir=client_lib_dir)
 
 
