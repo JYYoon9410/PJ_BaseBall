@@ -705,8 +705,8 @@ if menu == "메인페이지":
 #             unsafe_allow_html=True
 #         )  # KBO 이미지 URL을 사용하여 표시
 
-    with col2:
-        st.title("Home in Run")
+#    with col2:
+#        st.title("Home in Run")
     if 'selected_date' not in st.session_state:
         st.session_state.selected_date = datetime.now().date()
 
