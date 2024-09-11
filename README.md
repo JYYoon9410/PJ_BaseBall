@@ -1,2 +1,2 @@
-<strong>Home in run</strong>
-read me 적용함
+<h1>Home in run</h1>
+
