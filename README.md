@@ -16,3 +16,4 @@
   </ul>
   </li>
 </ul>
+<img src="team_logo2/야구홈피에요.png" alt="Logo" width="300">
